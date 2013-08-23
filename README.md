@@ -1,6 +1,7 @@
 # FcgiHttpKernel
 
-Port of [CgiHttpKernel](https://github.com/igorw/CgiHttpKernel) to FCGI.
+Port of [CgiHttpKernel](https://github.com/igorw/CgiHttpKernel) to FastCGI
+(FCGI).
 
 This is the same idea as the CGI kernel, but faster. And slightly more
 annoying, because you need to configure a port and bind to it. But as a
