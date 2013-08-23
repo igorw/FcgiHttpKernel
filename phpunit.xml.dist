@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit backupGlobals="false"
+         colors="true"
+         bootstrap="vendor/autoload.php"
+>
+    <php>
+        <env name="FCGI_HTTP_KERNEL_BIN" value="php-cgi"/>
+        <env name="FCGI_HTTP_KERNEL_HOST" value="127.0.0.1"/>
+        <env name="FCGI_HTTP_KERNEL_PORT" value="9947"/>
+    </php>
+
+    <testsuites>
+        <testsuite>
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./src/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
