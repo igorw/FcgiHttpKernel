@@ -24,6 +24,7 @@ class FcgiHttpKernelTest extends \PHPUnit_Framework_TestCase
 
         static::$server = $builder->getProcess();
         static::$server->start();
+        usleep(50000);
     }
 
     static public function tearDownAfterClass()
