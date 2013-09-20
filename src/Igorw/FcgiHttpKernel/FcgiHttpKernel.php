@@ -59,7 +59,7 @@ class FcgiHttpKernel implements HttpKernelInterface
         $cookie = $this->getUrlEncodedParameterBag($request->cookies);
         $params['HTTP_COOKIE'] = $cookie;
 
-        $response = $this->client->request($params, false);
+        $response = $this->client->request($params, $requestBody);
 
         list($headerList, $body) = explode("\r\n\r\n", $response, 2);
         $headerMap = $this->getHeaderMap($headerList);
