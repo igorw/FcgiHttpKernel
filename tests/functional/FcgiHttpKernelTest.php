@@ -128,8 +128,6 @@ class FcgiHttpKernelTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itShouldForwardRequestParameters()
     {
-        $this->markTestSkipped('not getting response from FCGI server');
-
         $request = Request::create('/post-params.php', 'POST', array('foo' => 'bar'));
         $response = $this->kernel->handle($request);
 
@@ -139,8 +137,6 @@ class FcgiHttpKernelTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function itShouldForwardRequestBody()
     {
-        $this->markTestSkipped('not getting response from FCGI server');
-
         $content = 'bazinga';
 
         $request = Request::create('/post-body.php', 'POST', array(), array(), array(), array(), $content);
