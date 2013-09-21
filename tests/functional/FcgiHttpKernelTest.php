@@ -17,6 +17,7 @@ class FcgiHttpKernelTest extends \PHPUnit_Framework_TestCase
         $port = getenv('FCGI_HTTP_KERNEL_PORT');
 
         $builder = ProcessBuilder::create()
+            ->add('exec')
             ->add($phpCgiBin)
             ->add('-d expose_php=Off')
             ->add('-b')
@@ -24,13 +25,17 @@ class FcgiHttpKernelTest extends \PHPUnit_Framework_TestCase
 
         static::$server = $builder->getProcess();
         static::$server->start();
+
         usleep(50000);
+
+        if (static::$server->isTerminated() && !static::$server->isSuccessful()) {
+            throw new \RuntimeException(sprintf('Can not start a server at %s:%s. Do you have "%s" installed?', $host, $port, $phpCgiBin));
+        }
     }
 
     static public function tearDownAfterClass()
     {
         static::$server->stop();
-        $processOutput = static::$server->getOutput();
     }
 
     private $client;
