@@ -17,6 +17,7 @@ class FcgiHttpKernelTest extends \PHPUnit_Framework_TestCase
         $port = getenv('FCGI_HTTP_KERNEL_PORT');
 
         $builder = ProcessBuilder::create()
+            ->add('exec')
             ->add($phpCgiBin)
             ->add('-d expose_php=Off')
             ->add('-b')
@@ -35,7 +36,6 @@ class FcgiHttpKernelTest extends \PHPUnit_Framework_TestCase
     static public function tearDownAfterClass()
     {
         static::$server->stop();
-        $processOutput = static::$server->getOutput();
     }
 
     private $client;
