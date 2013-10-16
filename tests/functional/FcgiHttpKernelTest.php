@@ -41,10 +41,12 @@ class FcgiHttpKernelTest extends \PHPUnit_Framework_TestCase
     private $client;
     private $kernel;
 
-    public function __construct()
+    public function __construct($name = NULL, array $data = array(), $dataName = '')
     {
         $this->client = new Client(getenv('FCGI_HTTP_KERNEL_HOST'), getenv('FCGI_HTTP_KERNEL_PORT'));
         $this->kernel = new FcgiHttpKernel($this->client, __DIR__.'/Fixtures');
+
+        parent::__construct($name, $data, $dataName);
     }
 
     /** @test */
@@ -246,24 +248,48 @@ class FcgiHttpKernelTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('/silex.php', $response->getContent());
     }
 
-    /** @test */
-    public function uploadShouldPutFileInFiles()
+    public function filesProvider()
     {
-        $this->markTestSkipped('not getting response from FCGI server');
+        return array(
+            array(
+                __DIR__.'/Fixtures/pixel.gif',
+                'pixel.gif',
+                'image/gif',
+                false,
+            ),
+            array(
+                __DIR__.'/Fixtures/sadkitten.gif',
+                'sadkitten.gif',
+                'image/gif',
+                'not getting response from FCGI server',
+            ),
+        );
+    }
 
-        $file = new UploadedFile(__DIR__.'/Fixtures/sadkitten.gif', 'sadkitten.gif', 'image/gif');
+    /**
+     * @dataProvider filesProvider
+     * @test
+     */
+    public function uploadShouldPutFileInFiles($path, $name, $type, $skipped)
+    {
+        if ($skipped) {
+            $this->markTestSkipped($skipped);
+        }
+
+        $file = new UploadedFile($path, $name, $type);
 
         $request = Request::create('/upload.php', 'POST');
         $request->files->add(array('kitten' => $file));
         $response = $this->kernel->handle($request);
 
         $expected = implode("\n", array(
-            'sadkitten.gif',
-            'image/gif',
-            '1304444',
+            $name,
+            $type,
+            $file->getSize(),
             '1',
             '0',
         ));
+
         $this->assertSame($expected."\n", $response->getContent());
     }
 
