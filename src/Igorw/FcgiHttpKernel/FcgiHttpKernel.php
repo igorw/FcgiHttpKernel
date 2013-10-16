@@ -206,8 +206,8 @@ class FcgiHttpKernel implements HttpKernelInterface
                          $file->getClientOriginalName());
         $data .= sprintf('Content-Type: %s'.$eol,
                          $file->getClientMimeType());
-        $data .= 'Content-Transfer-Encoding: base64'.$eol.$eol;
-        $data .= chunk_split(base64_encode($content)).$eol;
+        $data .= 'Content-Transfer-Encoding: binary'.$eol.$eol;
+        $data .= $content.$eol;
 
         return $data;
     }
