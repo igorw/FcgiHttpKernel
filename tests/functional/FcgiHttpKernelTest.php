@@ -262,6 +262,7 @@ class FcgiHttpKernelTest extends \PHPUnit_Framework_TestCase
             'image/gif',
             '1304444',
             '1',
+            '0',
         ));
         $this->assertSame($expected."\n", $response->getContent());
     }
