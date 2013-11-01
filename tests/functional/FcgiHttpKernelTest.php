@@ -1,7 +1,7 @@
 <?php
 
+use Adoy\FastCGI\Client;
 use Igorw\FcgiHttpKernel\FcgiHttpKernel;
-use Igorw\FcgiHttpKernel\Client;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Process\ProcessBuilder;

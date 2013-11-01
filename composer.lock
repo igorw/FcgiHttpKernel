@@ -3,8 +3,44 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "61b1c74284c144c2f4dc2978ae8a0ce9",
+    "hash": "f31adc0d2d71f781ec45559648e7b542",
     "packages": [
+        {
+            "name": "adoy/fastcgi-client",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adoy/PHP-FastCGI-Client.git",
+                "reference": "b64c93413f09f3f08826f5f18b54ea6acac63220"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adoy/PHP-FastCGI-Client/zipball/b64c93413f09f3f08826f5f18b54ea6acac63220",
+                "reference": "b64c93413f09f3f08826f5f18b54ea6acac63220",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Adoy\\FastCGI\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pierrick Charron",
+                    "email": "pierrick@adoy.net"
+                }
+            ],
+            "description": "Client for communication with a FastCGI (FCGI) application using the FastCGI protocol.",
+            "keywords": [
+                "fastcgi"
+            ],
+            "time": "2013-10-31 23:17:21"
+        },
         {
             "name": "psr/log",
             "version": "1.0.0",
@@ -324,21 +360,21 @@
         },
         {
             "name": "silex/silex",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Silex.git",
-                "reference": "b3a7beefa7e9a4d9d81bf207126f181858d4abda"
+                "reference": "47cc7d6545450ef8a91f50c04e8c7b3b04fceae9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Silex/zipball/b3a7beefa7e9a4d9d81bf207126f181858d4abda",
-                "reference": "b3a7beefa7e9a4d9d81bf207126f181858d4abda",
+                "url": "https://api.github.com/repos/fabpot/Silex/zipball/47cc7d6545450ef8a91f50c04e8c7b3b04fceae9",
+                "reference": "47cc7d6545450ef8a91f50c04e8c7b3b04fceae9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "pimple/pimple": "1.*",
+                "pimple/pimple": "~1.0",
                 "symfony/event-dispatcher": ">=2.3,<2.5-dev",
                 "symfony/http-foundation": ">=2.3,<2.5-dev",
                 "symfony/http-kernel": ">=2.3,<2.5-dev",
@@ -404,7 +440,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2013-10-11 10:30:06"
+            "time": "2013-10-30 08:53:26"
         },
         {
             "name": "symfony/process",
@@ -516,9 +552,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "adoy/fastcgi-client": 20
+    },
     "platform": [
 
     ],

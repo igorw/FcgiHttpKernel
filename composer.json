@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "symfony/http-kernel": "~2.1"
+        "symfony/http-kernel": "~2.1",
+        "adoy/fastcgi-client": "dev-master"
     },
     "require-dev": {
         "silex/silex": "~1.0",
